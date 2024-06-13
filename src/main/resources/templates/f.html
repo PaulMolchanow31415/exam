@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru"
+			xmlns:th="http://www.thymeleaf.org"
+			xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+>
+<head th:fragment="head">
+	<meta charset="UTF-8">
+	<title>Task Project Manager</title>
+	<link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+	<style>
+		:root {
+			--accent: #3370ff;
+		}
+		
+		.accent {
+			background: var(--accent);
+			color: white !important;
+		}
+		
+		samp { display: block; }
+		
+		input { width: 100%; }
+	</style>
+</head>
+<body>
+
+<header th:fragment="header">
+	<h1>Управление проектами онлайн</h1>
+	
+	<nav>
+		<a href="/">Главная</a>
+		
+		<th:block sec:authorize="isAuthenticated()">
+			<a href="/project/my">Мои проекты</a>
+			<a href="/logout">Выход</a>
+		</th:block>
+		
+		<a sec:authorize="hasAuthority('Администратор')" href="/user/all">Пользователи</a>
+		
+		<th:block sec:authorize="isAnonymous()">
+			<a href="/login">Войти</a>
+			<a href="/registration" class="button accent">Регистрация</a>
+		</th:block>
+	</nav>
+</header>
+
+</body>
+</html>

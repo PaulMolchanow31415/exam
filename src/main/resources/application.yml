@@ -1,0 +1,11 @@
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    username: Paul1234
+    password: password123
+    url: jdbc:h2:file:./database/data
+  jpa:
+    hibernate.ddl-auto: update
+    open-in-view: false
+    show-sql: true

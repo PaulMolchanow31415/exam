@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html
+	 xmlns:th="http://www.thymeleaf.org"
+	 lang="ru">
+<hr th:replace="~{f::head}">
+<body>
+
+<hr th:replace="~{f::header}">
+
+<h1>Управление задачами с Task Project Manager</h1>
+
+<p>Добро пожаловать в сервис по управлению проектами.</p>
+
+<p><a class="button" href="/project/create">Создать проект</a></p>
+
+<samp th:if="${projects.size() == 0}">Проекты не найдены</samp>
+
+<a th:each="p : ${projects}" th:object="${p}" th:text="*{name}" th:href="|/project/show/*{id}|"></a>
+
+</body>
+</html>

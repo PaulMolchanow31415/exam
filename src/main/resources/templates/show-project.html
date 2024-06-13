@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru"
+			xmlns:th="http://www.thymeleaf.org"
+>
+<hr th:replace="~{f::head}">
+<body>
+<hr th:replace="~{f::header}">
+
+<div>
+	<section th:object="${project}">
+		<h3 th:text="*{name}"></h3>
+		<p th:text="*{description}"></p>
+		
+		<form th:action="@{/task/store(projectId=${project.id})}" method="post" th:object="${task}">
+			<fieldset>
+				<p>
+					<label for="description">Описание задачи</label>
+					<input th:field="*{description}" type="text" id="description">
+					<samp th:errors="*{description}"></samp>
+				</p>
+				<button type="submit">Добавить</button>
+			</fieldset>
+		</form>
+		
+		<p>Список задач:</p>
+	
+	</section>
+</div>
+
+</body>
+</html>
